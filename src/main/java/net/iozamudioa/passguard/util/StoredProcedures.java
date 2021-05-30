@@ -9,4 +9,7 @@ public class StoredProcedures {
   public final String SAVE_USER = "saveUser";
   public final String SAVE_CREDENTIAL = "saveCredential";
 
+  public final String SAVE_UPDATE_PERSON_DATA = "updatePersonData";
+  public final String LIST_PERSON_DATA = "listPersonData";
+
 }

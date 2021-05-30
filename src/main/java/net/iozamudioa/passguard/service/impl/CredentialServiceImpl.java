@@ -28,6 +28,10 @@ public class CredentialServiceImpl implements CredentialService {
       throw new PasswordInvalidException("Password Invalid");
     }
 
+    if (!utilPassword.areEqual(credentialDto.getPassword(), credentialDto.getPasswordRepeat())) {
+      throw new PasswordInvalidException("It is not the same password.");
+    }
+
     return mapper.convertValue(credentialDao.save(credentialDto.getIdUser(),
         utilPassword.encode(credentialDto.getPassword())), CredentialDto.class);
   }

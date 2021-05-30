@@ -21,4 +21,8 @@ public class UtilPassword {
     return rawPassword.matches(REGEX_PASSWORD);
   }
 
+  public Boolean areEqual(String password, String passowrdRepeat) {
+    return password.equals(passowrdRepeat);
+  }
+
 }

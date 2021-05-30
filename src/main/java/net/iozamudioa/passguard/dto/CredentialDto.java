@@ -15,6 +15,7 @@ public class CredentialDto implements Serializable {
   private Integer idCredential;
   private Integer idUser;
   private String password;
+  private String passwordRepeat;
   private Date createdAt;
   private Date disabledAt;
   private Boolean enabled;
