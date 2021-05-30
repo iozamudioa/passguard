@@ -23,7 +23,7 @@ public class SwaggerConfig {
 
   private ApiInfo apiInfo() {
     return new ApiInfo("My REST API", "Some custom description of API.", "1.0", "Terms of service",
-        new Contact("Irving Zamudio", "iozamudioa.net", "irving.oldayr.za@gmail.com"),
+        new Contact("Irving Zamudio", "http://www.iozamudioa.net", "irving.oldayr.za@gmail.com"),
         "License of API", "API license URL", Collections.emptyList());
   }
 
@@ -31,7 +31,8 @@ public class SwaggerConfig {
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
         .securityContexts(Arrays.asList(securityContext())).securitySchemes(Arrays.asList(apiKey()))
-        .select().apis(RequestHandlerSelectors.any()).paths(PathSelectors.any()).build();
+        .select().apis(RequestHandlerSelectors.basePackage("net.iozamudioa.passguard.rest"))
+        .paths(PathSelectors.any()).build();
   }
 
   private ApiKey apiKey() {

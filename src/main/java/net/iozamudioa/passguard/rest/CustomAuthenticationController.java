@@ -6,9 +6,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.iozamudioa.passguard.config.JwtTokenUtil;
@@ -43,6 +46,11 @@ public class CustomAuthenticationController {
     final String token = Constant.PREFIX_TOKEN + jwtTokenUtil.generateToken(userDetails);
 
     return new ResponseDto<LoginResponseDto>(new LoginResponseDto(token));
+  }
+
+  @GetMapping("/")
+  public ModelAndView redirectWithUsingRedirectPrefix(ModelMap model) {
+    return new ModelAndView("redirect:/swagger-ui/", model);
   }
 
   private void authenticate(String username, String password) {
