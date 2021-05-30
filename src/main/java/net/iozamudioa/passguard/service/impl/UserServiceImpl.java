@@ -2,6 +2,7 @@ package net.iozamudioa.passguard.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.iozamudioa.passguard.dao.UserDao;
 import net.iozamudioa.passguard.dto.UserDto;
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
   private UtilPassword utilPassword;
 
   @Override
+  @Transactional
   public UserDto save(UserDto userDto) throws PasswordInvalidException {
 
     if (!utilPassword.isValid(userDto.getPassword())) {

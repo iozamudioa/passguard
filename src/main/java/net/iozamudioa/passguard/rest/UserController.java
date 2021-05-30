@@ -3,6 +3,7 @@ package net.iozamudioa.passguard.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -11,8 +12,9 @@ import net.iozamudioa.passguard.dto.UserDto;
 import net.iozamudioa.passguard.exception.PasswordInvalidException;
 import net.iozamudioa.passguard.service.UserService;
 
-@RestController(value = "/users")
-@Api(tags = "Users")
+@RestController
+@RequestMapping("/users")
+@Api(tags = "Users", description = "Methods provided for management of users")
 public class UserController {
 
   @Autowired
@@ -27,6 +29,7 @@ public class UserController {
     response.setMessage("Created Successfully.");
     return response;
   }
+
 
 
 }

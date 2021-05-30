@@ -1,6 +1,7 @@
 package net.iozamudioa.passguard.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Component;
+import lombok.extern.log4j.Log4j2;
 
 @Component
+@Log4j2
 public class UtilDao {
 
   @Autowired
@@ -18,6 +21,8 @@ public class UtilDao {
   public Map<String, Object> executeProcedure(String procedureName, Object... params) {
     SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate);
     simpleJdbcCall.setProcedureName(procedureName);
+    log.debug("exec {}({})", procedureName, Arrays.toString(params));
+
     return params != null ? simpleJdbcCall.execute(params) : simpleJdbcCall.execute();
   }
 

@@ -22,7 +22,8 @@ public class SwaggerConfig {
   public static final String AUTHORIZATION_HEADER = "Authorization";
 
   private ApiInfo apiInfo() {
-    return new ApiInfo("My REST API", "Some custom description of API.", "1.0", "Terms of service",
+    return new ApiInfo("Passguard API", "Some custom description of API.", "1.0",
+        "Terms of service",
         new Contact("Irving Zamudio", "http://www.iozamudioa.net", "irving.oldayr.za@gmail.com"),
         "License of API", "API license URL", Collections.emptyList());
   }

@@ -6,22 +6,19 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.iozamudioa.passguard.config.JwtTokenUtil;
 import net.iozamudioa.passguard.dto.LoginResponseDto;
+import net.iozamudioa.passguard.dto.RequestAuthenticateDto;
 import net.iozamudioa.passguard.dto.ResponseDto;
-import net.iozamudioa.passguard.dto.UserDto;
 import net.iozamudioa.passguard.util.Constant;
 
 @RestController
-@Api(tags = "Authentication", description = "jhlkadjshflkdja")
+@Api(tags = "Authenticate", description = "Methods provided for authenticate in api endpoints")
 public class CustomAuthenticationController {
 
   @Autowired
@@ -35,22 +32,17 @@ public class CustomAuthenticationController {
 
   @PostMapping(value = "/authenticate")
   @ApiOperation(value = "Method for authentication.")
-  public ResponseDto<LoginResponseDto> createAuthenticationToken(@RequestBody UserDto userDto)
-      throws Exception {
+  public ResponseDto<LoginResponseDto> createAuthenticationToken(
+      @RequestBody RequestAuthenticateDto requestAuthenticateDto) throws Exception {
 
-    authenticate(userDto.getUsername(), userDto.getPassword());
+    authenticate(requestAuthenticateDto.getUsername(), requestAuthenticateDto.getPassword());
 
     final UserDetails userDetails =
-        customUserDetailsService.loadUserByUsername(userDto.getUsername());
+        customUserDetailsService.loadUserByUsername(requestAuthenticateDto.getUsername());
 
     final String token = Constant.PREFIX_TOKEN + jwtTokenUtil.generateToken(userDetails);
 
     return new ResponseDto<LoginResponseDto>(new LoginResponseDto(token));
-  }
-
-  @GetMapping("/")
-  public ModelAndView redirectWithUsingRedirectPrefix(ModelMap model) {
-    return new ModelAndView("redirect:/swagger-ui/", model);
   }
 
   private void authenticate(String username, String password) {
