@@ -69,6 +69,7 @@
 	</dependencies>
 
 	<build>
+	<finalName>service-passguard</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
