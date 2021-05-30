@@ -6,11 +6,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import net.iozamudioa.passguard.config.JwtTokenUtil;
 import net.iozamudioa.passguard.dto.LoginResponseDto;
 import net.iozamudioa.passguard.dto.ResponseDto;
@@ -18,7 +18,7 @@ import net.iozamudioa.passguard.dto.UserDto;
 import net.iozamudioa.passguard.util.Constant;
 
 @RestController
-@CrossOrigin
+@Api(tags = "Authentication", description = "jhlkadjshflkdja")
 public class CustomAuthenticationController {
 
   @Autowired
@@ -30,14 +30,15 @@ public class CustomAuthenticationController {
   @Autowired
   private UserDetailsService customUserDetailsService;
 
-  @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-  public ResponseDto<LoginResponseDto> createAuthenticationToken(
-      @RequestBody UserDto authenticationRequest) throws Exception {
+  @PostMapping(value = "/authenticate")
+  @ApiOperation(value = "Method for authentication.")
+  public ResponseDto<LoginResponseDto> createAuthenticationToken(@RequestBody UserDto userDto)
+      throws Exception {
 
-    authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+    authenticate(userDto.getUsername(), userDto.getPassword());
 
     final UserDetails userDetails =
-        customUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        customUserDetailsService.loadUserByUsername(userDto.getUsername());
 
     final String token = Constant.PREFIX_TOKEN + jwtTokenUtil.generateToken(userDetails);
 
