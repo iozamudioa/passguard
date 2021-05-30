@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "iozamudioa-api",
+  "private_key_id": "db9d2098e89fcd482fbdc944281a8704d5a00d13",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC2qg4yS2wHJxma\n2yh4lfAuLqLQBPQo8NZf2ZZLDs4BOKUMY+MmFn9Yxa4fIKtq63MJbjGJyK2jP5YF\n4xgkT7vLxfLWSa2iJOAiz7gl7UfOLDsqDcOkhoM0AjA66o0vrrtXNy8yY9OInlNN\n3f5D/7igP597m5i5HAlYoOYee9fpT9KjdVvIxdT6AK4cSmaOrqNl3o77Ah1Xenaw\nyeL40uIB/v9M5pRe456D8KgV8sPq5amM10zBOZbO7U96QlFktDXZ+SzG7Nd0YewI\niMr/kMg5KR+MG8EbckfQloNpwbDBtksQxAje3M93JIcCB42/e22bupL0K7oUZ/AA\nRpaOVx6pAgMBAAECggEAGo24CJmsN5H4h+lqBbWON7hx1JmTwMvZ7g8caQba7ZSF\ncbqnj6bfllEOUdoW8TEPBQTu0J/KlhutPGfZ35VzsFizR3Foe1Su/ICDvYez04Xc\nh+1+TlF7izjyN+5W3eKhuzj7dHDMlGSnqX8m8k2fUjRNg9OHrQklVqv1J+NK7NB9\n3hP6sbuuWNxObVro/FGo6LApJl/q9+ZJjMiSt7j8sv88/a6hOhPhfu3qSkC0aVA1\nyFIRXdsw8oDfyXcVm5h8gExJimtRKGUdfWsXJClx2K9YbQ59NxwU0fdte4wA/BQx\no5UCWKiZJtMMVLEOOReVjHQjslvTn05kyHpB21a2HQKBgQDgGJBU9poIZv/QGeNk\nXCwmc9eJ8dKek+uoXLEU+w97x06fRIqDXodGcxybPf30dNPakVuy7zA0s7WuKSxP\npoimbadjT+SgCSGGQKEtyorw2WlGof4IWLkeRX8gk3xZxdEjJ5/5DU8DTtXyzJ2s\nbr/W1xkcEfL+6NYAxK9ivqUl0wKBgQDQq3dmKsEzIFPIjG38YxM8aza4VOf7c0Kr\nGUXhdvx9JpBz5HhdMETRBGci2K6UISrZh0UPpt3pRpClXXoZbL+d6ZIluJMEPMjF\nX6EycR4UJxmlsAX14EX+vI3gB5fK5zn+xvhs2tpN5/jv2IKaj1/OqKO3ruJJovv9\n70aiV7NwEwKBgG3inaOL6KwGFZptl1s2909DroUt1yF7VysPiKXJFiaT7LGcYm9Y\nguzAtV5KX6TnRJsAe/6Z2wF8vbHQ7rF/77HsQxAntOvkjlPOjTpu/wJrGXxRIsfk\n+aEmYtgOegNrRMoAPClbpUrx9WdBfm93PwqSHvXst0LX2Vg3GelJoqGRAoGAC0PW\ndEuGlo3+N+ts3J00oqRfFeBvjaGRTc9VeHCF/POiBL+mx9EdRfNo5fawpgqMV6X3\n0np9rGRE1siPGORIC+xaGXM3bJkjdZRODX0R1KCvv8Qa7kUnQjNHrXp7dVa6SMjR\nDH9cHaySQdB8bH+k+nEcNYRZbwQ/elv6gjUd2MUCgYEAkaZc+aLDCVs3yo1WTbtV\nsHwx6n4k3WlwkV6fYn81vkQM8RHuNToNDSFPFfuiPmDT/HjO3TGjjP6r7SEyhzKg\nR2FX7B2IbgY5jWEXPd6v2XxbNIm8sUTpahjl0rJHPkPa1NpEMrnqpVO13cjrJgXB\nfqrhdKjCdfoYpQJ75rNuIbk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "iozamudioa@iozamudioa-api.iam.gserviceaccount.com",
+  "client_id": "110009783493920176845",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/iozamudioa%40iozamudioa-api.iam.gserviceaccount.com"
+}
