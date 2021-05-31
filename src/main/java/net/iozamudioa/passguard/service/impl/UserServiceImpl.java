@@ -38,9 +38,9 @@ public class UserServiceImpl implements UserService {
       throw new PasswordInvalidException("Password Invalid");
     }
 
-    if (!utilUsername.isValid(userDto.getUsername())) {
-      throw new PasswordInvalidException("Username Invalid");
-    }
+    // if (!utilUsername.isValid(userDto.getUsername())) {
+    // throw new PasswordInvalidException("Username Invalid");
+    // }
 
     UserDto user = mapper.convertValue(
         userDao.save(userDto.getUsername(), utilPassword.encode(userDto.getPassword())),
