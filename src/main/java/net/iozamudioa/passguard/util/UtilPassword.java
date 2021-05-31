@@ -10,6 +10,8 @@ public class UtilPassword {
   private static final String REGEX_PASSWORD =
       "^(?=(?:.*\\d){2})(?=(?:.*[A-Z]){1})(?=(?:.*[@$?¡\\-_]){1})\\S{8,}$";
 
+
+
   @Autowired
   private PasswordEncoder passwordEncoder;
 
