@@ -46,6 +46,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
       }
     } else {
       log.warn("JWT Token does not begin with Bearer String");
+      log.info("view {}", request.getRequestURI());
     }
 
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
