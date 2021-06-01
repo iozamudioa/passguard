@@ -43,7 +43,7 @@ public class UserController {
       throws PasswordInvalidException, ResourceNotFoundException {
     ResponseDto<UserDto> response = new ResponseDto<UserDto>();
     response.setData(usersService.getByUsername(username));
-    response.setMessage("Obtain Successfully.");
+    response.setMessage("Obtained Successfully.");
     return response;
   }
 
@@ -53,7 +53,7 @@ public class UserController {
       throws PasswordInvalidException, ResourceNotFoundException {
     ResponseDto<List<UserDto>> response = new ResponseDto<List<UserDto>>();
     response.setData(usersService.list());
-    response.setMessage("Obtain Successfully.");
+    response.setMessage("Obtained Successfully.");
     return response;
   }
 
