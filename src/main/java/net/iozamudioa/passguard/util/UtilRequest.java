@@ -11,7 +11,10 @@ public class UtilRequest {
   public Integer getIdUser(HttpServletRequest request, Integer idUser) throws Exception {
     Integer idUserToken = (Integer) request.getAttribute("idUser");
 
-    if (idUser != null) {
+    log.info("idUserToken [{}]", idUserToken);
+    log.info("idUser [{}]", idUser);
+
+    if (idUser == null) {
       idUser = idUserToken;
     }
 
@@ -23,6 +26,8 @@ public class UtilRequest {
       log.info("user dont is admin!");
       idUser = idUserToken;
     }
+
+
 
     return idUser;
   }
