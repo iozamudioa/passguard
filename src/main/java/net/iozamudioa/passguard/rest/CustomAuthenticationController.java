@@ -4,7 +4,6 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +14,7 @@ import net.iozamudioa.passguard.config.JwtTokenUtil;
 import net.iozamudioa.passguard.dto.LoginResponseDto;
 import net.iozamudioa.passguard.dto.RequestAuthenticateDto;
 import net.iozamudioa.passguard.dto.ResponseDto;
+import net.iozamudioa.passguard.dto.secure.AuthUser;
 import net.iozamudioa.passguard.util.Constant;
 
 @RestController
@@ -37,10 +37,10 @@ public class CustomAuthenticationController {
 
     authenticate(requestAuthenticateDto.getUsername(), requestAuthenticateDto.getPassword());
 
-    final UserDetails userDetails =
-        customUserDetailsService.loadUserByUsername(requestAuthenticateDto.getUsername());
+    AuthUser authUser = (AuthUser) customUserDetailsService
+        .loadUserByUsername(requestAuthenticateDto.getUsername());
 
-    final String token = Constant.PREFIX_TOKEN + jwtTokenUtil.generateToken(userDetails);
+    final String token = Constant.PREFIX_TOKEN + jwtTokenUtil.generateToken(authUser);
 
     return new ResponseDto<LoginResponseDto>(new LoginResponseDto(token));
   }

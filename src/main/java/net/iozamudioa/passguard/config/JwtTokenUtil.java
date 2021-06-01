@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import net.iozamudioa.passguard.dto.secure.AuthUser;
 
 @Component
 public class JwtTokenUtil implements Serializable {
@@ -70,9 +71,9 @@ public class JwtTokenUtil implements Serializable {
     return (!isTokenExpired(token) || ignoreTokenExpiration(token));
   }
 
-  public Boolean validateToken(String token, UserDetails userDetails) {
+  public Boolean validateToken(String token, AuthUser auhtUser) {
     final String username = getUsernameFromToken(token);
-    return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    return (username.equals(auhtUser.getUsername()) && !isTokenExpired(token));
   }
 
 }

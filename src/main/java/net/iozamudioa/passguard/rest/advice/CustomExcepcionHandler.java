@@ -2,6 +2,7 @@ package net.iozamudioa.passguard.rest.advice;
 
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -42,6 +43,16 @@ public class CustomExcepcionHandler {
     }
 
     ex.printStackTrace();
+    return resposne;
+  }
+
+
+  @ExceptionHandler(value = AccessDeniedException.class)
+  @ResponseStatus(value = HttpStatus.FORBIDDEN)
+  public ResponseDto<Object> exception(AccessDeniedException ex) {
+    ex.printStackTrace();
+    ResponseDto<Object> resposne = new ResponseDto<Object>();
+    resposne.setError(ex.getMessage());
     return resposne;
   }
 

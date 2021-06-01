@@ -4,6 +4,7 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.Data;
+import net.iozamudioa.passguard.util.enums.Roles;
 
 @Data
 @JsonInclude(value = Include.NON_NULL)
@@ -13,9 +14,9 @@ public class UserDto implements Serializable {
 
   private Integer idUser;
 
-  // @Size(min = 6, max = 6)
   private String username;
   private String password;
+  private Roles role;
 
   private PersonDataDto personData;
 

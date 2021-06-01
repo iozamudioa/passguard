@@ -11,6 +11,7 @@ import net.iozamudioa.passguard.service.PersonDataService;
 import net.iozamudioa.passguard.service.UserService;
 import net.iozamudioa.passguard.util.UtilPassword;
 import net.iozamudioa.passguard.util.UtilUsername;
+import net.iozamudioa.passguard.util.enums.Roles;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -42,8 +43,9 @@ public class UserServiceImpl implements UserService {
       throw new PasswordInvalidException("Username Invalid");
     }
 
-    UserDto user = mapper.convertValue(
-        userDao.save(userDto.getUsername(), utilPassword.encode(userDto.getPassword())),
+    UserDto user = mapper.convertValue(userDao.save(userDto.getUsername(),
+        utilPassword.encode(userDto.getPassword()),
+        userDto.getRole() == null ? Roles.ROLE_USER.getIdRole() : userDto.getRole().getIdRole()),
         UserDto.class);
 
     return userDto.getPersonData() != null

@@ -1,5 +1,6 @@
 package net.iozamudioa.passguard.dao.impl;
 
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,8 +15,8 @@ public class UserAuthenticationDaoImpl implements UserAuthenticationDao {
   private UtilDao utilDao;
 
   @Override
-  public Map<String, Object> getCredentialsByUsername(Object... params) {
-    return utilDao.procedureForMap(StoredProcedures.GET_CREDENTIALS_BY_USERNAME, params);
+  public List<Map<String, Object>> getCredentialsByUsername(Object... params) {
+    return utilDao.procedureForList(StoredProcedures.GET_CREDENTIALS_BY_USERNAME, params);
   }
 
 }

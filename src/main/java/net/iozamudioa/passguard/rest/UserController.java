@@ -1,6 +1,7 @@
 package net.iozamudioa.passguard.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,8 @@ public class UserController {
 
   @PostMapping
   @ApiOperation(value = "This method is used to save user.")
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
   public ResponseDto<UserDto> save(@RequestBody UserDto userDto) throws PasswordInvalidException {
-
     ResponseDto<UserDto> response = new ResponseDto<UserDto>();
     response.setData(usersService.save(userDto));
     response.setMessage("Created Successfully.");
