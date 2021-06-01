@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
@@ -23,13 +24,10 @@ public class PersonDataController {
   @Autowired
   private PersonDataService personDataService;
 
-  @PostMapping("/{idUser}")
+  @PostMapping({"/{idUser}", ""})
   public ResponseDto<UserDto> saveOrUpdate(HttpServletRequest request,
-      @PathVariable("idUser") Integer idUser, @PathVariable PersonDataDto personDataDto)
-      throws Exception {
-    if (idUser == 0) {
-      throw new Exception("idUser not valid");
-    }
+      @PathVariable(value = "idUser", required = false) Integer idUser,
+      @RequestBody PersonDataDto personDataDto) throws Exception {
 
     idUser = UtilRequest.getIdUser(request, idUser);
 
