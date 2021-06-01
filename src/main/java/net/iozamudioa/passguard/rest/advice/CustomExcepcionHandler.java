@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import net.iozamudioa.passguard.dto.ResponseDto;
 import net.iozamudioa.passguard.exception.PasswordInvalidException;
+import net.iozamudioa.passguard.exception.ResourceNotFoundException;
 
 @RestControllerAdvice
 public class CustomExcepcionHandler {
@@ -50,6 +51,17 @@ public class CustomExcepcionHandler {
   @ExceptionHandler(value = AccessDeniedException.class)
   @ResponseStatus(value = HttpStatus.FORBIDDEN)
   public ResponseDto<Object> exception(AccessDeniedException ex) {
+    ex.printStackTrace();
+    ResponseDto<Object> resposne = new ResponseDto<Object>();
+    resposne.setError(ex.getMessage());
+    return resposne;
+  }
+
+
+
+  @ExceptionHandler(value = ResourceNotFoundException.class)
+  @ResponseStatus(value = HttpStatus.NOT_FOUND)
+  public ResponseDto<Object> exception(ResourceNotFoundException ex) {
     ex.printStackTrace();
     ResponseDto<Object> resposne = new ResponseDto<Object>();
     resposne.setError(ex.getMessage());

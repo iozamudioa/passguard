@@ -1,8 +1,6 @@
 package net.iozamudioa.passguard.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -12,6 +10,7 @@ import net.iozamudioa.passguard.dao.PersonDataDao;
 import net.iozamudioa.passguard.dto.PersonDataDto;
 import net.iozamudioa.passguard.dto.UserDto;
 import net.iozamudioa.passguard.service.PersonDataService;
+import net.iozamudioa.passguard.util.UtilServices;
 
 @Service
 public class PersonDataServiceImpl implements PersonDataService {
@@ -24,35 +23,22 @@ public class PersonDataServiceImpl implements PersonDataService {
 
   @Override
   public List<UserDto> list() throws JsonMappingException, JsonProcessingException {
-    return getListFromResultSet(personDataDao.list(new Object[] {null}));
+    return UtilServices.getUserListFromResultSet(personDataDao.list(new Object[] {null}), mapper);
   }
 
   @Override
   public UserDto get(Integer idUser) {
-    return getFromResultSet(personDataDao.get(idUser));
+    return UtilServices.getUserFromResultSet(personDataDao.get(idUser), mapper);
   }
 
   @Override
   public UserDto saveOrUpdate(Integer idUser, PersonDataDto personDataDto) {
-    return getFromResultSet(
+    return UtilServices.getUserFromResultSet(
         personDataDao.saveOrUpdate(personDataDto.getName(), personDataDto.getLastname(),
-            personDataDto.getEmail(), personDataDto.getBirthDate(), idUser));
+            personDataDto.getEmail(), personDataDto.getBirthDate(), idUser),
+        mapper);
   }
 
 
-  private List<UserDto> getListFromResultSet(List<Map<String, Object>> resultset) {
-    List<UserDto> lst = new ArrayList<>();
-    resultset.forEach(i -> {
-      lst.add(getFromResultSet(i));
-    });
-    return lst;
-
-  }
-
-  private UserDto getFromResultSet(Map<String, Object> map) {
-    UserDto userDto = mapper.convertValue(map, UserDto.class);
-    userDto.setPersonData(mapper.convertValue(map, PersonDataDto.class));
-    return userDto;
-  }
 
 }
